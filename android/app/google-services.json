@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "428079534919",
+    "project_id": "ldauth-bc640",
+    "storage_bucket": "ldauth-bc640.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428079534919:android:8d1d353c3762a2a8407262",
+        "android_client_info": {
+          "package_name": "com.example.ldadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428079534919-qm1uaa0mjaekun8cpgc6cbcj29gvo3jh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADbLcJKBs_jD3fLaq3-f0TVrDaWGKLCTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428079534919-qm1uaa0mjaekun8cpgc6cbcj29gvo3jh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "428079534919-1adnhubhfnhiu82kd07fpl5n62g68tu9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ldmanpower"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428079534919:android:bfd61476a2321509407262",
+        "android_client_info": {
+          "package_name": "com.example.ldfrontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428079534919-qm1uaa0mjaekun8cpgc6cbcj29gvo3jh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADbLcJKBs_jD3fLaq3-f0TVrDaWGKLCTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428079534919-qm1uaa0mjaekun8cpgc6cbcj29gvo3jh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "428079534919-1adnhubhfnhiu82kd07fpl5n62g68tu9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ldmanpower"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428079534919:android:2489749fba7a2a22407262",
+        "android_client_info": {
+          "package_name": "com.example.ldmanpower"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428079534919-qm1uaa0mjaekun8cpgc6cbcj29gvo3jh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADbLcJKBs_jD3fLaq3-f0TVrDaWGKLCTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428079534919-qm1uaa0mjaekun8cpgc6cbcj29gvo3jh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "428079534919-1adnhubhfnhiu82kd07fpl5n62g68tu9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ldmanpower"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
