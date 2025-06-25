@@ -35,8 +35,7 @@ class AuthGate extends StatefulWidget {
   State<AuthGate> createState() => _AuthGateState();
 }
 
-class _AuthGateState extends State<AuthGate>
-    with SingleTickerProviderStateMixin {
+class _AuthGateState extends State<AuthGate> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   bool _showScreen = false;
@@ -63,19 +62,20 @@ class _AuthGateState extends State<AuthGate>
 
     if (user != null) {
       try {
-        final doc = await FirebaseFirestore.instance
-            .collection('users')
-            .doc(user.uid)
+        final query = await FirebaseFirestore.instance
+            .collection('users') // 👈 must be lowercase 'users' if your collection is like that
+            .where('email', isEqualTo: user.email)
+            .limit(1)
             .get();
 
-        if (doc.exists) {
-          // ✅ User exists in Firestore
+        if (query.docs.isNotEmpty) {
+          // ✅ User exists
           setState(() {
             _showScreen = true;
             _isLoggedIn = true;
           });
         } else {
-          // ❌ User does not exist in Firestore
+          // ❌ Email not found in 'users'
           await FirebaseAuth.instance.signOut();
           setState(() {
             _showScreen = true;
@@ -84,7 +84,7 @@ class _AuthGateState extends State<AuthGate>
           _showAccessDeniedDialog();
         }
       } catch (e) {
-        print('❌ Error fetching user: $e');
+        print('❌ Error checking user: $e');
         await FirebaseAuth.instance.signOut();
         setState(() {
           _showScreen = true;
@@ -93,7 +93,6 @@ class _AuthGateState extends State<AuthGate>
         _showAccessDeniedDialog();
       }
     } else {
-      // No user logged in
       setState(() {
         _showScreen = true;
         _isLoggedIn = false;
