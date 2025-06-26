@@ -9,9 +9,7 @@ import 'pages/login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -35,7 +33,8 @@ class AuthGate extends StatefulWidget {
   State<AuthGate> createState() => _AuthGateState();
 }
 
-class _AuthGateState extends State<AuthGate> with SingleTickerProviderStateMixin {
+class _AuthGateState extends State<AuthGate>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   bool _showScreen = false;
@@ -62,20 +61,21 @@ class _AuthGateState extends State<AuthGate> with SingleTickerProviderStateMixin
 
     if (user != null) {
       try {
-        final query = await FirebaseFirestore.instance
-            .collection('users') // 👈 must be lowercase 'users' if your collection is like that
-            .where('email', isEqualTo: user.email)
-            .limit(1)
+        final uid = user.uid;
+
+        final doc = await FirebaseFirestore.instance
+            .collection('Users') // ✅ make sure this matches Firestore
+            .doc(uid)
             .get();
 
-        if (query.docs.isNotEmpty) {
-          // ✅ User exists
+        if (doc.exists) {
+          // ✅ User exists in Firestore
           setState(() {
             _showScreen = true;
             _isLoggedIn = true;
           });
         } else {
-          // ❌ Email not found in 'users'
+          // ❌ UID not found in Firestore
           await FirebaseAuth.instance.signOut();
           setState(() {
             _showScreen = true;
@@ -93,6 +93,7 @@ class _AuthGateState extends State<AuthGate> with SingleTickerProviderStateMixin
         _showAccessDeniedDialog();
       }
     } else {
+      // No user logged in
       setState(() {
         _showScreen = true;
         _isLoggedIn = false;
@@ -106,7 +107,9 @@ class _AuthGateState extends State<AuthGate> with SingleTickerProviderStateMixin
         context: context,
         builder: (_) => AlertDialog(
           title: const Text("Access Denied"),
-          content: const Text("This account is not allowed to access this app."),
+          content: const Text(
+            "This account is not allowed to access this app.",
+          ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
